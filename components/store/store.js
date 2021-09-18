@@ -1,7 +1,7 @@
 import makeStore from './makeStore';
 
-const [TodoProvider, useTodo, useSetTodo] = makeStore();
-const [ThemeProvider, useTheme, useSetTheme] = makeStore();
+const [TodoProvider, useTodo, useDispatchTodo] = makeStore();
+const [ThemeProvider, useTheme, useDispatchTheme] = makeStore();
 
-export { TodoProvider, useTodo, useSetTodo };
-export { ThemeProvider, useTheme, useSetTheme };
+export { TodoProvider, useTodo, useDispatchTodo };
+export { ThemeProvider, useTheme, useDispatchTheme };

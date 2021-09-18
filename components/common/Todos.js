@@ -1,36 +1,30 @@
-import { useSetTodo } from '../store/store';
+import { useDispatchTodo } from '../store/store';
 import TodoItem from './TodoItem';
 
 const Todos = () => {
-    const setTodos = useSetTodo();
+    const dispatchTodo = useDispatchTodo();
 
     const createTodo = () => {
-        setTodos((old) => [
-            ...old,
-            {
+        dispatchTodo({
+            type: 'CREATE_TODO',
+            payload: {
                 name: 'Newly Created Todo',
                 id: 'id Three',
             },
-        ]);
+        });
     };
 
     const updateTodo = () => {
-        setTodos((old) => {
-            const update = old.map((todo) => {
-                if (todo.id === 'id Two') {
-                    return { ...todo, name: 'Updated Name' };
-                }
-                return todo;
-            });
-            return update;
+        dispatchTodo({
+            type: 'UPDATE_TODO',
+            payload: {
+                name: 'Updated Name',
+            },
         });
     };
 
     const deleteTodo = () => {
-        setTodos((old) => {
-            const update = old.filter((todo) => todo.id !== 'id One');
-            return update;
-        });
+        dispatchTodo({ type: 'DELETE_TODO', id: 'id One' });
     };
 
     return (

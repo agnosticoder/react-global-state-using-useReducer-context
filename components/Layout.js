@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useTheme, useSetTheme } from './store/store';
+import { useTheme, useDispatchTheme } from './store/store';
 
 const Layout = ({ children }) => {
     const theme = useTheme();
-    const setTheme = useSetTheme();
+    const dispatchTheme = useDispatchTheme();
 
     const headerDark = theme ? 'header-dark' : '';
     const bodyDark = theme ? 'body-dark' : '';
@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
                 </div>
                 <h1>App Name</h1>
             </div>
-            <button onClick={() => setTheme((prevTheme) => !prevTheme)} type="button">
+            <button onClick={() => dispatchTheme({ type: 'toggle' })} type="button">
                 Toggle Theme
             </button>
             <main>{children}</main>
